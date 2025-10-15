@@ -50,7 +50,7 @@ class Settings(BaseSettings):
     
     # Vector database
     CHROMA_PERSIST_DIR: str = "./chroma_db"
-    EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"  # Lighter model name
+    EMBEDDING_MODEL: str = "jina-embeddings-v2-base-en"  # Lighter model name
     KNOWLEDGE_BASE_PATH: str = "./app/data/medical_kb.json"
     MEDICAL_RESEARCH_KB_PATH: str = "./app/data/medical_research_kb.json"
     
