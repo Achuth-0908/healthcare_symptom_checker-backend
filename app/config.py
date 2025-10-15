@@ -30,12 +30,12 @@ class Settings(BaseSettings):
     MAX_TOKENS: int = 2048
     
     # Database
-    DATABASE_URL: str = "sqlite:///./healthcare.db"
-    POSTGRES_HOST: str = "localhost"
+    DATABASE_URL: str = "postgresql://health_symptom_checker_user:4IgnXn7S7lnErOpG0GKDpmUw89voW5C3@dpg-d3neevodl3ps73ep6m5g-a/health_symptom_checker"
+    POSTGRES_HOST: str = "dpg-d3neevodl3ps73ep6m5g-a"
     POSTGRES_PORT: str = "5432"
-    POSTGRES_DB: str = "symptom_checker"
-    POSTGRES_USER: str = "postgres"
-    POSTGRES_PASSWORD: str = "12345"
+    POSTGRES_DB: str = "health_symptom_checker"
+    POSTGRES_USER: str = "health_symptom_checker_user"
+    POSTGRES_PASSWORD: str = "4IgnXn7S7lnErOpG0GKDpmUw89voW5C3"
     
     @property
     def database_url(self) -> str:

@@ -19,6 +19,9 @@ groq==0.4.1
 numpy<2.0.0
 scikit-learn==1.3.2  # Lighter alternative for embeddings
 
+# Database - Use SQLite for deployment
+# psycopg2-binary==2.9.9  # Commented out - use SQLite instead
+
 # Utilities
 python-dotenv==1.0.0
 python-multipart==0.0.6
