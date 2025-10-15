@@ -49,7 +49,7 @@ class Settings(BaseSettings):
     
     # Vector database
     CHROMA_PERSIST_DIR: str = "./chroma_db"
-    EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
+    EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"  # Lighter model name
     KNOWLEDGE_BASE_PATH: str = "./medical_kb.json"
     
     # RAG settings

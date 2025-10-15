@@ -5,11 +5,13 @@ Uses ChromaDB for vector storage and retrieval
 
 import chromadb
 from chromadb.config import Settings as ChromaSettings
-from chromadb.utils import embedding_functions
 import json
 import logging
 from typing import List, Dict, Any, Optional
 import os
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 from app.config import settings
 
@@ -30,10 +32,9 @@ class RAGService:
     def initialize(self):
         """Initialize ChromaDB and load medical knowledge base"""
         try:
-            # Initialize embedding function
-            self.embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(
-                model_name=settings.EMBEDDING_MODEL
-            )
+            # Use ChromaDB's default embedding function (more memory efficient)
+            # This avoids loading heavy sentence-transformers models
+            self.embedding_function = embedding_functions.DefaultEmbeddingFunction()
             
             # Initialize ChromaDB client
             self.client = chromadb.PersistentClient(
