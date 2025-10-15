@@ -1,0 +1,62 @@
+# Render deployment configuration
+services:
+  # Healthcare Symptom Checker API
+  - type: web
+    name: healthcare-symptom-checker
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GEMINI_API_KEY
+        fromDatabase:
+          name: healthcare-symptom-checker-db
+          property: gemini_api_key
+      - key: GROQ_API_KEY
+        fromDatabase:
+          name: healthcare-symptom-checker-db
+          property: groq_api_key
+      - key: POSTGRES_HOST
+        fromDatabase:
+          name: healthcare-symptom-checker-db
+          property: host
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: healthcare-symptom-checker-db
+          property: port
+      - key: POSTGRES_DB
+        fromDatabase:
+          name: healthcare-symptom-checker-db
+          property: database
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: healthcare-symptom-checker-db
+          property: user
+      - key: POSTGRES_PASSWORD
+        fromDatabase:
+          name: healthcare-symptom-checker-db
+          property: password
+      - key: DEBUG
+        value: false
+      - key: LOG_LEVEL
+        value: INFO
+      - key: ALLOWED_ORIGINS
+        value: https://healthcare-symptom-checker.onrender.com,http://localhost:3000
+      - key: RATE_LIMIT_REQUESTS
+        value: 100
+      - key: RATE_LIMIT_WINDOW
+        value: 3600
+
+  # PostgreSQL Database
+  - type: pserv
+    name: healthcare-symptom-checker-db
+    env: postgresql
+    plan: starter
+    ipAllowList: []
+    maxConnections: 20
+    disk:
+      name: healthcare-symptom-checker-disk
+      mountPath: /var/lib/postgresql/data
+      sizeGB: 1
