@@ -1,33 +1,33 @@
 # Healthcare Symptom Checker - Production Requirements
-# Using older pydantic version to avoid Rust compilation issues
+# Let pip resolve compatible versions automatically
 
 # Core Framework
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-pydantic==1.10.13
-pydantic-settings==2.0.3
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
 
 # Database - PostgreSQL
-sqlalchemy==2.0.25
-psycopg2-binary==2.9.9
-alembic==1.13.1
+sqlalchemy
+psycopg2-binary
+alembic
 
 # LLM Integration
-google-generativeai==0.3.2
-groq==0.4.1
+google-generativeai
+groq
 
 # Vector Database & Embeddings
-chromadb==0.4.22
-sentence-transformers==2.3.1
-numpy==1.26.4
+chromadb
+sentence-transformers
+numpy<2.0.0
 
 # Utilities
-python-dotenv==1.0.0
-python-multipart==0.0.6
-tenacity==8.2.3
+python-dotenv
+python-multipart
+tenacity
 
 # Logging
-python-json-logger==2.0.7
+python-json-logger
 
 # Production Server
-gunicorn==21.2.0
+gunicorn
