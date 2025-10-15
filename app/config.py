@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     GROQ_API_KEY: str
     
     # LLM models
-    GEMINI_MODEL: str = "gemini-1.5-flash"
+    GEMINI_MODEL: str = "gemini-1.5-pro"
     GROQ_MODEL: str = "llama-3.1-70b-versatile"
     PRIMARY_LLM: str = "gemini"
     FALLBACK_LLM: str = "groq"
@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     MAX_TOKENS: int = 2048
     
     # Database
-    DATABASE_URL: str = "postgresql://postgres:12345@localhost:5432/symptom_checker"
+    DATABASE_URL: str = "sqlite:///./healthcare.db"
     POSTGRES_HOST: str = "localhost"
     POSTGRES_PORT: str = "5432"
     POSTGRES_DB: str = "symptom_checker"
