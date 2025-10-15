@@ -58,6 +58,11 @@ class Settings(BaseSettings):
     TOP_K_RETRIEVAL: int = 5
     SIMILARITY_THRESHOLD: float = 0.7
     
+    # API timeout settings
+    JINA_API_TIMEOUT: int = 60
+    JINA_API_MAX_RETRIES: int = 3
+    LLM_API_TIMEOUT: int = 120
+    
     # CORS
     ALLOWED_ORIGINS: str = "http://localhost:3000,http://localhost:8000,http://127.0.0.1:3000,http://127.0.0.1:8000"
     

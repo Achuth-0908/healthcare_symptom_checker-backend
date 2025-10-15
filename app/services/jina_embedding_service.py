@@ -9,6 +9,8 @@ import logging
 from typing import List, Dict, Any, Optional
 import asyncio
 import aiohttp
+import time
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 from app.config import settings
 
 logger = logging.getLogger(__name__)
@@ -27,10 +29,21 @@ class JinaEmbeddingService:
             "Content-Type": "application/json",
             "Authorization": f"Bearer {settings.JINA_API_KEY}"
         }
+        # Configurable timeouts for different environments
+        self.timeout = settings.JINA_API_TIMEOUT
+        self.max_retries = settings.JINA_API_MAX_RETRIES
+    
+    def _get_retry_decorator(self):
+        """Get retry decorator with configurable settings"""
+        return retry(
+            stop=stop_after_attempt(self.max_retries),
+            wait=wait_exponential(multiplier=1, min=2, max=10),
+            retry=retry_if_exception_type((aiohttp.ClientError, asyncio.TimeoutError, requests.exceptions.RequestException))
+        )
     
     async def get_embeddings(self, texts: List[str]) -> List[List[float]]:
         """
-        Get embeddings for a list of texts using Jina API
+        Get embeddings for a list of texts using Jina API with retry logic
         
         Args:
             texts: List of texts to embed
@@ -38,18 +51,21 @@ class JinaEmbeddingService:
         Returns:
             List of embedding vectors
         """
-        try:
+        retry_decorator = self._get_retry_decorator()
+        
+        @retry_decorator
+        async def _make_request():
             payload = {
                 "model": self.model,
                 "input": texts
             }
             
-            async with aiohttp.ClientSession() as session:
+            timeout = aiohttp.ClientTimeout(total=self.timeout)
+            async with aiohttp.ClientSession(timeout=timeout) as session:
                 async with session.post(
                     self.api_url,
                     headers=self.headers,
-                    json=payload,
-                    timeout=30
+                    json=payload
                 ) as response:
                     if response.status == 200:
                         result = await response.json()
@@ -57,16 +73,21 @@ class JinaEmbeddingService:
                     else:
                         logger.error(f"Jina API error: {response.status}")
                         return []
-                        
+        
+        try:
+            return await _make_request()
         except Exception as e:
-            logger.error(f"Error getting Jina embeddings: {e}")
+            logger.error(f"Error getting Jina embeddings after retries: {e}")
             return []
     
     def get_embeddings_sync(self, texts: List[str]) -> List[List[float]]:
         """
-        Synchronous version of get_embeddings
+        Synchronous version of get_embeddings with retry logic
         """
-        try:
+        retry_decorator = self._get_retry_decorator()
+        
+        @retry_decorator
+        def _make_request():
             payload = {
                 "model": self.model,
                 "input": texts
@@ -76,7 +97,7 @@ class JinaEmbeddingService:
                 self.api_url,
                 headers=self.headers,
                 json=payload,
-                timeout=30
+                timeout=self.timeout
             )
             
             if response.status_code == 200:
@@ -85,9 +106,11 @@ class JinaEmbeddingService:
             else:
                 logger.error(f"Jina API error: {response.status_code}")
                 return []
-                
+        
+        try:
+            return _make_request()
         except Exception as e:
-            logger.error(f"Error getting Jina embeddings: {e}")
+            logger.error(f"Error getting Jina embeddings after retries: {e}")
             return []
     
     async def embed_medical_text(self, text: str) -> Optional[List[float]]:

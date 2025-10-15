@@ -234,11 +234,12 @@ class EnhancedRAGService:
                 logger.error("RAG service not initialized")
                 return []
             
-            # Get query embedding from Jina
+            # Get query embedding from Jina with fallback
             query_embedding = self.jina_service.embed_medical_text_sync(query)
             if not query_embedding:
-                logger.error("Failed to get query embedding")
-                return []
+                logger.warning("Failed to get query embedding from Jina, falling back to text-based search")
+                # Fallback to text-based search without embeddings
+                return self._fallback_text_search(query, top_k)
             
             # Search in ChromaDB
             results = self.collection.query(
@@ -344,3 +345,43 @@ class EnhancedRAGService:
             'guidelines_count': len(self.guidelines) if self.guidelines else 0,
             'clinical_conditions_count': len(self.clinical_conditions) if self.clinical_conditions else 0
         }
+    
+    def _fallback_text_search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+        """
+        Fallback text-based search when embeddings fail
+        Uses simple keyword matching on the knowledge base
+        """
+        try:
+            if not self.knowledge_base:
+                logger.error("No knowledge base available for fallback search")
+                return []
+            
+            query_lower = query.lower()
+            query_words = set(query_lower.split())
+            
+            results = []
+            
+            # Search through all knowledge base entries
+            for condition in self.knowledge_base:
+                condition_text = f"{condition.get('name', '')} {condition.get('description', '')} {condition.get('symptoms', '')}"
+                condition_text_lower = condition_text.lower()
+                condition_words = set(condition_text_lower.split())
+                
+                # Calculate simple word overlap score
+                overlap = len(query_words.intersection(condition_words))
+                if overlap > 0:
+                    score = overlap / len(query_words)  # Normalize by query length
+                    results.append({
+                        'document': condition_text,
+                        'metadata': condition,
+                        'distance': 1.0 - score,  # Convert to distance (lower is better)
+                        'score': score
+                    })
+            
+            # Sort by score (highest first) and return top_k
+            results.sort(key=lambda x: x['score'], reverse=True)
+            return results[:top_k]
+            
+        except Exception as e:
+            logger.error(f"Error in fallback text search: {e}")
+            return []
