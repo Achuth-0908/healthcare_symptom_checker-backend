@@ -56,8 +56,8 @@ class JinaEmbeddingService:
         @retry_decorator
         async def _make_request():
             payload = {
-                "model": self.model,
-                "input": texts
+                "input": texts,
+                "model": self.model
             }
             
             timeout = aiohttp.ClientTimeout(total=self.timeout)
