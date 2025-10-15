@@ -14,8 +14,9 @@ groq
 
 # Vector Database & Embeddings
 chromadb
-sentence-transformers
 numpy<2.0.0
+jina
+requests
 
 # Utilities
 python-dotenv

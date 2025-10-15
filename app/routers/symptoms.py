@@ -23,9 +23,10 @@ from app.models import (
 )
 from app.database import get_db
 from app.services.llm_service import get_llm_service
-from app.services.rag_service import get_rag_service
+from app.services.enhanced_rag_service import EnhancedRAGService
 from app.services.triage_service import get_triage_service
 from app.services.conversation_manager import get_conversation_manager
+from app.config import settings
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -102,7 +103,7 @@ async def process_symptom_message(
     try:
         # Get services
         conversation_manager = get_conversation_manager()
-        rag_service = get_rag_service()
+        rag_service = request.app.state.rag_service
         llm_service = get_llm_service()
         triage_service = get_triage_service()
         
@@ -187,12 +188,23 @@ async def process_symptom_message(
                 timestamp=datetime.utcnow()
             )
         
-        # Retrieve relevant conditions using RAG
-        retrieved_conditions = rag_service.retrieve_relevant_conditions(
-            message.message
-        )
-        
-        formatted_conditions = rag_service.format_retrieved_conditions(retrieved_conditions)
+        # Retrieve relevant conditions using Enhanced RAG
+        if rag_service:
+            retrieved_conditions = await rag_service.retrieve_relevant_conditions(
+                message.message, 
+                top_k=settings.TOP_K_RETRIEVAL
+            )
+            # Format retrieved conditions for LLM
+            formatted_conditions = []
+            for condition in retrieved_conditions:
+                formatted_conditions.append({
+                    'content': condition.get('content', ''),
+                    'metadata': condition.get('metadata', {}),
+                    'similarity_score': condition.get('similarity_score', 0.0)
+                })
+        else:
+            logger.warning("RAG service not available, using empty conditions")
+            formatted_conditions = []
         
         # Get conversation context
         conversation_context = session.get_conversation_context()
@@ -210,10 +222,21 @@ async def process_symptom_message(
         # Parse LLM response into Assessment
         conditions = []
         for cond_data in llm_response.get('probable_conditions', []):
-            conditions.append(Condition(**cond_data))
+            # Ensure urgency_level is lowercase and valid
+            if 'urgency_level' in cond_data:
+                cond_data['urgency_level'] = cond_data['urgency_level'].lower()
+            # Convert to dictionary for Assessment model
+            condition_dict = {
+                'name': cond_data.get('name', ''),
+                'probability': cond_data.get('probability', 0.0),
+                'description': cond_data.get('description', ''),
+                'urgency_level': cond_data.get('urgency_level', 'routine'),
+                'recommendations': cond_data.get('recommendations', [])
+            }
+            conditions.append(condition_dict)
         
         # Combine triage results
-        llm_urgency = llm_response.get('urgency', 'ROUTINE')
+        llm_urgency = llm_response.get('urgency', 'routine').lower()
         confidence_scores = llm_response.get('confidence_scores', {})
         average_confidence = sum(confidence_scores.values()) / max(len(confidence_scores), 1)
         
@@ -222,6 +245,13 @@ async def process_symptom_message(
             llm_urgency,
             average_confidence
         )
+        
+        # Ensure final_urgency is a valid UrgencyLevel
+        if isinstance(final_urgency, str):
+            final_urgency = final_urgency.lower()
+            if final_urgency not in ['emergency', 'urgent', 'moderate', 'low', 'routine', 'self_care']:
+                final_urgency = 'routine'
+            final_urgency = UrgencyLevel(final_urgency)
         
         # Generate warnings if needed
         emergency_warning = None

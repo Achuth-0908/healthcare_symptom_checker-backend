@@ -183,6 +183,9 @@ class LLMService:
             elif "```" in response:
                 response = response.split("```")[1].split("```")[0].strip()
             
+            # Log the response for debugging
+            logger.info(f"LLM response: {response[:500]}...")
+            
             result = json.loads(response)
             return result
         except json.JSONDecodeError as e:

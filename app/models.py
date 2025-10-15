@@ -17,6 +17,8 @@ class UrgencyLevel(str, Enum):
     URGENT = "urgent" 
     MODERATE = "moderate"
     LOW = "low"
+    ROUTINE = "routine"
+    SELF_CARE = "self_care"
 
 
 class SymptomInput(BaseModel):

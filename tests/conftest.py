@@ -87,11 +87,18 @@ def mock_llm_service():
 
 @pytest.fixture
 def mock_rag_service():
-    """Mock RAG service"""
-    with patch('app.services.rag_service.get_rag_service') as mock:
+    """Mock Enhanced RAG service"""
+    with patch('app.services.enhanced_rag_service.EnhancedRAGService') as mock:
         mock_service = mock.return_value
         mock_service.retrieve_relevant_conditions.return_value = []
-        mock_service.format_retrieved_conditions.return_value = "No conditions found"
+        mock_service.get_service_status.return_value = {
+            'initialized': True,
+            'jina_service_available': True,
+            'knowledge_base_loaded': True,
+            'research_papers_count': 10,
+            'guidelines_count': 8,
+            'clinical_conditions_count': 15
+        }
         yield mock_service
 
 

@@ -13,7 +13,7 @@ from app.config import settings
 from app.database import init_db, close_db
 from app.middleware import RateLimitMiddleware, SecurityMiddleware, LoggingMiddleware
 from app.routers import symptoms, history
-from app.services.rag_service import RAGService
+from app.services.enhanced_rag_service import EnhancedRAGService
 
 logging.basicConfig(
     level=logging.INFO,
@@ -29,13 +29,14 @@ async def lifespan(app: FastAPI):
     init_db()
     
     try:
-        rag_service = RAGService()
+        rag_service = EnhancedRAGService()
         rag_service.initialize()
         app.state.rag_service = rag_service
-        logger.info("RAG service ready")
+        logger.info("Enhanced RAG service ready with Jina API and medical research")
     except Exception as e:
-        logger.error(f"RAG service failed: {e}")
-        raise
+        logger.error(f"Enhanced RAG service failed: {e}")
+        logger.warning("Continuing without Enhanced RAG service - some features may be limited")
+        app.state.rag_service = None
     
     yield
     
@@ -107,8 +108,8 @@ if __name__ == "__main__":
     import uvicorn
     import os
     
-    # Get port from environment variable (for Render deployment) or default to 8000
-    port = int(os.environ.get("PORT", 8000))
+    # Get port from environment variable (for Render deployment) or default to 4000
+    port = int(os.environ.get("PORT", 4000))
     
     uvicorn.run(
         "main:app",

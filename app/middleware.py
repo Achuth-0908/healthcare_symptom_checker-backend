@@ -141,6 +141,10 @@ class SecurityMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         client_ip = self._get_client_ip(request)
         
+        # Allow localhost requests for testing
+        if client_ip in ['127.0.0.1', '::1', 'localhost']:
+            return await call_next(request)
+        
         # Check if IP is blocked
         if client_ip in self.blocked_ips:
             logger.warning(f"Blocked IP attempted access: {client_ip}")

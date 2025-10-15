@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     # API keys
     GEMINI_API_KEY: str
     GROQ_API_KEY: str
+    JINA_API_KEY: str 
     
     # LLM models
     GEMINI_MODEL: str = "gemini-1.5-pro"
@@ -49,8 +50,9 @@ class Settings(BaseSettings):
     
     # Vector database
     CHROMA_PERSIST_DIR: str = "./chroma_db"
-    EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
-    KNOWLEDGE_BASE_PATH: str = "./medical_kb.json"
+    EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"  # Lighter model name
+    KNOWLEDGE_BASE_PATH: str = "./app/data/medical_kb.json"
+    MEDICAL_RESEARCH_KB_PATH: str = "./app/data/medical_research_kb.json"
     
     # RAG settings
     TOP_K_RETRIEVAL: int = 5

@@ -989,7 +989,7 @@ systemctl status postgresql
 ```bash
 # Clear ChromaDB cache
 rm -rf chroma_db/
-python -c "from app.services.rag_service import RAGService; RAGService().initialize()"
+python -c "from app.services.enhanced_rag_service import EnhancedRAGService; EnhancedRAGService().initialize()"
 ```
 
 ---
