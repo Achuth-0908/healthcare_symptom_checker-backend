@@ -198,23 +198,23 @@ sequenceDiagram
 ```mermaid
 graph LR
     subgraph "Core Services"
-        A[LLM Service<br/>Gemini + Groq]
-        B[RAG Service<br/>Vector Search]
-        C[Triage Service<br/>Emergency Detection]
-        D[Conversation Manager<br/>Session Management]
+        A["LLM Service<br/>Gemini + Groq"]
+        B["RAG Service<br/>Vector Search"]
+        C["Triage Service<br/>Emergency Detection"]
+        D["Conversation Manager<br/>Session Management"]
     end
     
     subgraph "Data Models"
-        E[Session Model<br/>Patient Info]
-        F[Conversation Model<br/>Chat History]
-        G[Audit Log Model<br/>Security Tracking]
+        E["Session Model<br/>Patient Info"]
+        F["Conversation Model<br/>Chat History"]
+        G["Audit Log Model<br/>Security Tracking"]
     end
     
     subgraph "API Endpoints"
-        H[/api/symptom/start<br/>Session Creation]
-        I[/api/symptom/message<br/>Symptom Analysis]
-        J[/api/history/{id}<br/>Conversation History]
-        K[/api/health<br/>System Health]
+        H["/api/symptom/start<br/>Session Creation"]
+        I["/api/symptom/message<br/>Symptom Analysis"]
+        J["/api/history/{id}<br/>Conversation History"]
+        K["/api/health<br/>System Health"]
     end
     
     A --> E
