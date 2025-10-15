@@ -75,6 +75,16 @@ class LLMService:
             
         except Exception as e:
             logger.error(f"Gemini generation failed: {e}")
+            # If it's a model not found error, try with a different model
+            if "not found" in str(e).lower() or "404" in str(e):
+                logger.warning("Gemini model not found, trying with gemini-1.5-flash")
+                try:
+                    # Try with the flash model as fallback
+                    model = genai.GenerativeModel('gemini-1.5-flash')
+                    response = model.generate_content(prompt)
+                    return response.text
+                except Exception as fallback_error:
+                    logger.error(f"Gemini fallback also failed: {fallback_error}")
             raise
     
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))

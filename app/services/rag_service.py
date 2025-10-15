@@ -179,6 +179,10 @@ class RAGService:
         if top_k is None:
             top_k = settings.TOP_K_RETRIEVAL
         
+        if not self.collection:
+            logger.error("RAG collection not initialized")
+            return []
+        
         try:
             results = self.collection.query(
                 query_texts=[query],

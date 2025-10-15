@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     GROQ_API_KEY: str
     
     # LLM models
-    GEMINI_MODEL: str = "gemini-1.5-pro"
+    GEMINI_MODEL: str = "gemini-1.5-flash"
     GROQ_MODEL: str = "llama-3.1-70b-versatile"
     PRIMARY_LLM: str = "gemini"
     FALLBACK_LLM: str = "groq"

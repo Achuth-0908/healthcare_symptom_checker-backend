@@ -33,8 +33,16 @@ async def lifespan(app: FastAPI):
     
     try:
         # Initialize database
-        await init_db()
+        init_db()
         logger.info("Database initialized")
+        
+        # Initialize RAG service
+        from app.services.rag_service import get_rag_service
+        rag_service = get_rag_service()
+        rag_service.initialize()
+        app.state.rag_service = rag_service
+        logger.info("RAG service initialized")
+        
         logger.info("Application startup completed")
         
     except Exception as e:
@@ -46,7 +54,7 @@ async def lifespan(app: FastAPI):
     # Shutdown
     logger.info("Shutting down Healthcare Symptom Checker API...")
     try:
-        await close_db()
+        close_db()
         logger.info("Database connections closed")
     except Exception as e:
         logger.error(f"Shutdown error: {e}")
