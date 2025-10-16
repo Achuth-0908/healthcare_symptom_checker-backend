@@ -2,10 +2,13 @@
 Healthcare Symptom Checker API
 AI-powered medical symptom analysis with emergency detection
 """
+import asyncio
 import logging
+import os
 from contextlib import asynccontextmanager
+import httpx
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -20,6 +23,29 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+async def keep_alive_ping():
+    """Send a GET request to the health endpoint every minute to keep Render alive"""
+    while True:
+        try:
+            # Get the base URL from environment or use localhost for development
+            base_url = os.environ.get("RENDER_EXTERNAL_URL", "http://localhost:4000")
+            if base_url == "http://localhost:4000":
+                # For local development, we don't need to ping ourselves
+                await asyncio.sleep(60)
+                continue
+                
+            async with httpx.AsyncClient() as client:
+                response = await client.get(f"{base_url}/api/ping", timeout=10.0)
+                if response.status_code == 200:
+                    logger.info("Keep-alive ping successful")
+                else:
+                    logger.warning(f"Keep-alive ping failed with status: {response.status_code}")
+        except Exception as e:
+            logger.error(f"Keep-alive ping error: {e}")
+        
+        # Wait 60 seconds before next ping
+        await asyncio.sleep(60)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -38,7 +64,18 @@ async def lifespan(app: FastAPI):
         logger.warning("Continuing without Enhanced RAG service - some features may be limited")
         app.state.rag_service = None
     
+    # Start the keep-alive background task
+    keep_alive_task = asyncio.create_task(keep_alive_ping())
+    logger.info("Keep-alive ping task started")
+    
     yield
+    
+    # Cancel the keep-alive task on shutdown
+    keep_alive_task.cancel()
+    try:
+        await keep_alive_task
+    except asyncio.CancelledError:
+        pass
     
     logger.info("Shutting down...")
     close_db()
@@ -96,6 +133,11 @@ async def health_check():
             "llm": "operational"
         }
     }
+
+@app.get("/api/ping")
+async def ping():
+    """Simple ping endpoint for keep-alive services"""
+    return {"message": "pong", "timestamp": asyncio.get_event_loop().time()}
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
