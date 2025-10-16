@@ -229,12 +229,6 @@ models/
 *.h5
 *.onnx
 
-# Data files (keep structure, ignore large files)
-data/
-!data/medical_kb.json
-uploads/
-temp/
-
 # Cache
 .cache/
 cache/

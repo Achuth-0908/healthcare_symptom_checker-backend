@@ -42,6 +42,7 @@ The Healthcare Symptom Checker is a production-ready, AI-powered medical symptom
 - **🚨 Emergency Detection**: Real-time identification of life-threatening conditions
 - **💬 Multi-turn Conversations**: Context-aware symptom discussions
 - **📊 Medical Knowledge Base**: Comprehensive condition database with RAG
+- **🔗 Jina AI Integration**: High-accuracy medical embeddings for enhanced semantic search
 - **🔒 Production Security**: Rate limiting, authentication, and audit logging
 - **📈 Scalable Architecture**: Microservices-ready with containerization
 
@@ -64,6 +65,7 @@ The Healthcare Symptom Checker is a production-ready, AI-powered medical symptom
 ### 📊 Comprehensive Medical Knowledge
 - **775+ Medical Conditions**: Extensive database with symptoms and treatments
 - **RAG Integration**: Vector-based similarity search for relevant conditions
+- **Jina AI Embeddings**: Specialized medical embeddings for accurate semantic matching
 - **Body System Mapping**: Cardiovascular, respiratory, neurological, etc.
 - **Treatment Recommendations**: Evidence-based care suggestions
 
@@ -72,6 +74,12 @@ The Healthcare Symptom Checker is a production-ready, AI-powered medical symptom
 - **Security Headers**: CORS, XSS protection, content security
 - **Audit Logging**: Complete request/response tracking
 - **Input Validation**: Comprehensive data sanitization
+
+### 🔗 Jina AI Integration
+- **Medical Embeddings**: Specialized healthcare-focused embedding models
+- **High Accuracy**: Superior semantic matching for medical terminology
+- **API Integration**: Cloud-based embedding service with retry logic
+- **Fallback Support**: Graceful degradation when service unavailable
 
 ### 📈 Scalability & Performance
 - **Async Operations**: Non-blocking I/O with FastAPI
@@ -555,6 +563,7 @@ CREATE TABLE audit_logs (
 |----------|-------------|---------|----------|
 | `GEMINI_API_KEY` | Google Gemini API key | - | ✅ |
 | `GROQ_API_KEY` | Groq API key | - | ✅ |
+| `JINA_API_KEY` | Jina AI API key for embeddings | - | ✅ |
 | `DATABASE_URL` | PostgreSQL connection string | - | ✅ |
 | `DEBUG` | Enable debug mode | `false` | ❌ |
 | `LOG_LEVEL` | Logging level | `INFO` | ❌ |
@@ -569,6 +578,7 @@ class Settings(BaseSettings):
     # API Keys
     GEMINI_API_KEY: str
     GROQ_API_KEY: str
+    JINA_API_KEY: str
     
     # Database
     DATABASE_URL: str
@@ -577,6 +587,12 @@ class Settings(BaseSettings):
     PRIMARY_LLM: str = "gemini"
     FALLBACK_LLM: str = "groq"
     TEMPERATURE_ANALYSIS: float = 0.3
+    
+    # RAG Configuration
+    CHROMA_PERSIST_DIR: str = "./chroma_db"
+    EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"
+    KNOWLEDGE_BASE_PATH: str = "./app/data/medical_kb.json"
+    MEDICAL_RESEARCH_KB_PATH: str = "./app/data/medical_research_kb.json"
     
     # Security
     RATE_LIMIT_REQUESTS: int = 50
@@ -949,12 +965,6 @@ Brief description of changes
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 🆘 Support
 
 ### Getting Help
@@ -1015,13 +1025,3 @@ python -c "from app.services.enhanced_rag_service import EnhancedRAGService; Enh
 - **v2.0.0** (Planned): Telemedicine platform integration
 
 ---
-
-<div align="center">
-
-**Built with ❤️ for better healthcare accessibility**
-
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/healthcare-symptom-checker?style=social)](https://github.com/yourusername/healthcare-symptom-checker)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/healthcare-symptom-checker?style=social)](https://github.com/yourusername/healthcare-symptom-checker)
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/healthcare-symptom-checker)](https://github.com/yourusername/healthcare-symptom-checker/issues)
-
-</div>

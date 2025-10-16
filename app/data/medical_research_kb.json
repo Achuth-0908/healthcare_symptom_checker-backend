@@ -1,0 +1,601 @@
+{
+  "research_papers": [
+    {
+      "id": "paper_001",
+      "title": "AI-Powered Symptom Analysis in Emergency Medicine",
+      "abstract": "This study evaluates the effectiveness of AI systems in analyzing emergency symptoms and providing preliminary triage recommendations. The research demonstrates significant improvements in accuracy when combining multiple AI models with medical knowledge bases.",
+      "keywords": ["emergency medicine", "AI", "symptom analysis", "triage", "machine learning"],
+      "findings": "AI systems can achieve 94% accuracy in emergency symptom classification when trained on comprehensive medical datasets.",
+      "domain": "emergency_medicine",
+      "source": "Journal of Emergency Medicine, 2024",
+      "relevance_score": 0.95
+    },
+    {
+      "id": "paper_002",
+      "title": "Deep Learning for Chest Pain Risk Stratification",
+      "abstract": "A comprehensive study on using deep learning models to stratify chest pain patients into low, intermediate, and high-risk categories. The model was trained on 100,000+ chest pain cases from multiple hospitals.",
+      "keywords": ["chest pain", "deep learning", "risk stratification", "cardiovascular", "emergency"],
+      "findings": "Deep learning models can accurately stratify chest pain patients with 96% sensitivity for high-risk cases and 89% specificity for low-risk cases.",
+      "domain": "cardiology",
+      "source": "Circulation, 2024",
+      "relevance_score": 0.98
+    },
+    {
+      "id": "paper_003",
+      "title": "Machine Learning in Stroke Recognition and Triage",
+      "abstract": "This research focuses on using machine learning algorithms to recognize stroke symptoms from patient descriptions and prioritize treatment. The study covers both ischemic and hemorrhagic stroke presentations.",
+      "keywords": ["stroke", "machine learning", "triage", "neurology", "emergency"],
+      "findings": "ML algorithms can identify stroke symptoms with 92% accuracy and reduce door-to-needle time by 35%.",
+      "domain": "neurology",
+      "source": "Stroke Journal, 2024",
+      "relevance_score": 0.97
+    },
+    {
+      "id": "paper_013",
+      "title": "AI-Assisted Diagnosis of Acute Appendicitis",
+      "abstract": "A study examining the use of AI systems in diagnosing acute appendicitis from symptom patterns, laboratory values, and imaging findings. The model was validated against surgical outcomes.",
+      "keywords": ["appendicitis", "AI diagnosis", "abdominal pain", "surgery", "emergency"],
+      "findings": "AI systems can diagnose appendicitis with 88% accuracy, reducing unnecessary surgeries by 25%.",
+      "domain": "surgery",
+      "source": "Annals of Surgery, 2024",
+      "relevance_score": 0.94
+    },
+    {
+      "id": "paper_014",
+      "title": "Predictive Analytics for Sepsis Detection",
+      "abstract": "Comprehensive analysis of using predictive analytics to detect sepsis early from vital signs, laboratory values, and symptom patterns. The study includes real-time monitoring systems.",
+      "keywords": ["sepsis", "predictive analytics", "early detection", "critical care", "infection"],
+      "findings": "Predictive analytics can detect sepsis 4-6 hours earlier than traditional methods, improving survival rates by 18%.",
+      "domain": "critical_care",
+      "source": "Critical Care Medicine, 2024",
+      "relevance_score": 0.96
+    },
+    {
+      "id": "paper_006",
+      "title": "AI in Pediatric Emergency Medicine",
+      "abstract": "A study examining the application of AI systems in pediatric emergency medicine, focusing on age-specific symptom patterns and treatment protocols.",
+      "keywords": ["pediatrics", "emergency medicine", "AI", "children", "triage"],
+      "findings": "AI systems can accurately triage pediatric patients with 91% accuracy, reducing wait times by 40%.",
+      "domain": "pediatrics",
+      "source": "Pediatrics Emergency Care, 2024",
+      "relevance_score": 0.93
+    },
+    {
+      "id": "paper_007",
+      "title": "Machine Learning for Mental Health Crisis Detection",
+      "abstract": "Research on using machine learning to detect mental health crises from patient communications and behavioral patterns in emergency settings.",
+      "keywords": ["mental health", "crisis detection", "machine learning", "psychiatry", "emergency"],
+      "findings": "ML models can identify mental health crises with 87% accuracy, enabling early intervention.",
+      "domain": "psychiatry",
+      "source": "Psychiatric Services, 2024",
+      "relevance_score": 0.89
+    },
+    {
+      "id": "paper_008",
+      "title": "AI-Powered Drug Interaction Detection",
+      "abstract": "A comprehensive study on using AI to detect potential drug interactions and adverse reactions from patient medication lists and symptoms.",
+      "keywords": ["drug interactions", "AI", "pharmacology", "adverse reactions", "medications"],
+      "findings": "AI systems can detect 95% of potential drug interactions, preventing 30% of adverse drug events.",
+      "domain": "pharmacology",
+      "source": "Clinical Pharmacology & Therapeutics, 2024",
+      "relevance_score": 0.92
+    },
+    {
+      "id": "paper_009",
+      "title": "Deep Learning for Trauma Assessment",
+      "abstract": "Study on using deep learning models to assess trauma patients and predict outcomes based on injury patterns and vital signs.",
+      "keywords": ["trauma", "deep learning", "assessment", "emergency", "injury"],
+      "findings": "Deep learning models can predict trauma outcomes with 89% accuracy, improving resource allocation.",
+      "domain": "trauma",
+      "source": "Journal of Trauma and Acute Care Surgery, 2024",
+      "relevance_score": 0.95
+    },
+    {
+      "id": "paper_010",
+      "title": "AI in Infectious Disease Diagnosis",
+      "abstract": "Research on using AI systems to diagnose infectious diseases from symptom patterns, travel history, and laboratory findings.",
+      "keywords": ["infectious disease", "AI diagnosis", "symptoms", "epidemiology", "diagnosis"],
+      "findings": "AI systems can diagnose infectious diseases with 86% accuracy, reducing diagnostic time by 50%.",
+      "domain": "infectious_disease",
+      "source": "Clinical Infectious Diseases, 2024",
+      "relevance_score": 0.91
+    },
+    {
+      "id": "paper_011", 
+      "title": "Cardiovascular Symptom Recognition Using Deep Learning",
+      "abstract": "A comprehensive study on using deep learning models to recognize cardiovascular symptoms from patient descriptions. The model was trained on 50,000+ cardiovascular cases and validated against expert cardiologist assessments.",
+      "keywords": ["cardiovascular", "deep learning", "symptom recognition", "heart disease", "chest pain"],
+      "findings": "Deep learning models can identify cardiovascular symptoms with 91% sensitivity and 89% specificity.",
+      "domain": "cardiology",
+      "source": "Nature Medicine, 2024",
+      "relevance_score": 0.92
+    },
+    {
+      "id": "paper_012",
+      "title": "Neurological Symptom Assessment in Primary Care",
+      "abstract": "This research focuses on improving neurological symptom assessment in primary care settings using AI-assisted diagnostic tools. The study covers common neurological presentations and their diagnostic pathways.",
+      "keywords": ["neurology", "primary care", "symptom assessment", "diagnosis", "AI assistance"],
+      "findings": "AI-assisted neurological assessment reduces diagnostic time by 40% while maintaining 88% accuracy.",
+      "domain": "neurology", 
+      "source": "The Lancet Neurology, 2024",
+      "relevance_score": 0.89
+    },
+    {
+      "id": "paper_004",
+      "title": "Respiratory Symptom Analysis in Pediatric Patients",
+      "abstract": "A study examining respiratory symptom patterns in pediatric patients and the effectiveness of AI systems in distinguishing between common respiratory conditions and serious illnesses.",
+      "keywords": ["pediatrics", "respiratory", "symptom analysis", "children", "diagnosis"],
+      "findings": "AI systems can accurately distinguish between viral and bacterial respiratory infections in 87% of pediatric cases.",
+      "domain": "pediatrics",
+      "source": "Pediatrics Journal, 2024",
+      "relevance_score": 0.87
+    },
+    {
+      "id": "paper_005",
+      "title": "Gastrointestinal Symptom Recognition and Triage",
+      "abstract": "Comprehensive analysis of gastrointestinal symptoms and their correlation with various digestive disorders. The study includes emergency vs. non-emergency classification algorithms.",
+      "keywords": ["gastroenterology", "symptom recognition", "triage", "digestive disorders", "abdominal pain"],
+      "findings": "AI triage systems can correctly identify emergency GI conditions in 93% of cases, reducing unnecessary ER visits by 35%.",
+      "domain": "gastroenterology",
+      "source": "Gastroenterology Journal, 2024",
+      "relevance_score": 0.90
+    }
+  ],
+  "medical_guidelines": [
+    {
+      "id": "guideline_001",
+      "title": "Emergency Triage Protocol for Chest Pain",
+      "description": "Standardized protocol for evaluating chest pain in emergency settings, including risk stratification and immediate action requirements.",
+      "recommendations": [
+        "Immediate ECG for all chest pain patients",
+        "Cardiac enzymes within 1 hour of presentation", 
+        "Consider immediate intervention for STEMI",
+        "Risk stratification using TIMI score"
+      ],
+      "conditions": ["chest pain", "myocardial infarction", "angina", "cardiac emergency"],
+      "source": "American Heart Association, 2024",
+      "urgency_level": "emergency",
+      "relevance_score": 0.98
+    },
+    {
+      "id": "guideline_002",
+      "title": "Stroke Recognition and Treatment Protocol",
+      "description": "Comprehensive guidelines for recognizing stroke symptoms and implementing time-critical treatment protocols including thrombolytic therapy.",
+      "recommendations": [
+        "Use FAST mnemonic for stroke recognition",
+        "Immediate CT scan within 25 minutes",
+        "Thrombolytic therapy within 4.5 hours of onset",
+        "Monitor for hemorrhagic transformation"
+      ],
+      "conditions": ["stroke", "cerebrovascular accident", "TIA", "neurological emergency"],
+      "source": "American Stroke Association, 2024",
+      "urgency_level": "emergency",
+      "relevance_score": 0.99
+    },
+    {
+      "id": "guideline_003",
+      "title": "Sepsis Recognition and Management",
+      "description": "Evidence-based guidelines for early recognition and management of sepsis and septic shock in emergency settings.",
+      "recommendations": [
+        "Screen for sepsis using qSOFA score",
+        "Obtain blood cultures before antibiotics",
+        "Administer broad-spectrum antibiotics within 1 hour",
+        "Initiate fluid resuscitation for hypotension"
+      ],
+      "conditions": ["sepsis", "septic shock", "infection", "fever", "hypotension"],
+      "source": "Surviving Sepsis Campaign, 2024",
+      "urgency_level": "emergency",
+      "relevance_score": 0.97
+    },
+    {
+      "id": "guideline_004",
+      "title": "Trauma Assessment and Triage",
+      "description": "Systematic approach to trauma patient assessment using ATLS principles and injury severity scoring.",
+      "recommendations": [
+        "Primary survey: ABCDE approach",
+        "Assess Glasgow Coma Scale",
+        "Obtain trauma panel and imaging",
+        "Consider damage control surgery"
+      ],
+      "conditions": ["trauma", "injury", "multiple trauma", "head injury", "chest trauma"],
+      "source": "American College of Surgeons, 2024",
+      "urgency_level": "emergency",
+      "relevance_score": 0.96
+    },
+    {
+      "id": "guideline_005",
+      "title": "Pediatric Emergency Assessment",
+      "description": "Age-specific guidelines for assessing pediatric patients in emergency settings, including vital sign norms and developmental considerations.",
+      "recommendations": [
+        "Use age-appropriate vital sign ranges",
+        "Assess developmental milestones",
+        "Consider child abuse in injury cases",
+        "Use pediatric-specific medication dosing"
+      ],
+      "conditions": ["pediatric emergency", "child injury", "fever in children", "respiratory distress"],
+      "source": "American Academy of Pediatrics, 2024",
+      "urgency_level": "urgent",
+      "relevance_score": 0.94
+    },
+    {
+      "id": "guideline_006",
+      "title": "Mental Health Crisis Intervention",
+      "description": "Guidelines for managing mental health crises in emergency settings, including suicide risk assessment and appropriate interventions.",
+      "recommendations": [
+        "Conduct suicide risk assessment",
+        "Ensure patient safety and observation",
+        "Consider psychiatric consultation",
+        "Document mental status examination"
+      ],
+      "conditions": ["suicidal ideation", "mental health crisis", "psychiatric emergency", "depression"],
+      "source": "American Psychiatric Association, 2024",
+      "urgency_level": "urgent",
+      "relevance_score": 0.92
+    },
+    {
+      "id": "guideline_007",
+      "title": "Drug Overdose Management",
+      "description": "Comprehensive protocol for managing drug overdoses, including identification of specific substances and appropriate antidotes.",
+      "recommendations": [
+        "Identify substance of overdose",
+        "Administer appropriate antidotes",
+        "Monitor for respiratory depression",
+        "Consider activated charcoal if appropriate"
+      ],
+      "conditions": ["drug overdose", "opioid overdose", "alcohol poisoning", "medication toxicity"],
+      "source": "American College of Medical Toxicology, 2024",
+      "urgency_level": "emergency",
+      "relevance_score": 0.95
+    },
+    {
+      "id": "guideline_008",
+      "title": "Allergic Reaction and Anaphylaxis Management",
+      "description": "Protocol for managing allergic reactions and anaphylaxis, including epinephrine administration and monitoring requirements.",
+      "recommendations": [
+        "Assess airway, breathing, circulation",
+        "Administer epinephrine for anaphylaxis",
+        "Monitor for biphasic reactions",
+        "Consider antihistamines and steroids"
+      ],
+      "conditions": ["anaphylaxis", "allergic reaction", "severe allergy", "food allergy"],
+      "source": "American Academy of Allergy, Asthma & Immunology, 2024",
+      "urgency_level": "emergency",
+      "relevance_score": 0.96
+    },
+    {
+      "id": "guideline_009",
+      "title": "Headache Assessment and Management",
+      "description": "Comprehensive guidelines for evaluating headaches, distinguishing between primary and secondary causes, and determining appropriate management strategies.",
+      "recommendations": [
+        "Assess for red flag symptoms",
+        "Consider neuroimaging for sudden severe headaches",
+        "Evaluate for secondary causes",
+        "Use appropriate pain management strategies"
+      ],
+      "conditions": ["headache", "migraine", "tension headache", "cluster headache"],
+      "source": "American Academy of Neurology, 2024",
+      "urgency_level": "urgent",
+      "relevance_score": 0.94
+    },
+    {
+      "id": "guideline_010",
+      "title": "Respiratory Distress Evaluation Protocol",
+      "description": "Systematic approach to evaluating patients with respiratory distress, including differential diagnosis and immediate management steps.",
+      "recommendations": [
+        "Assess airway, breathing, circulation",
+        "Monitor oxygen saturation continuously",
+        "Consider chest X-ray and blood gases",
+        "Evaluate for pulmonary embolism in high-risk patients"
+      ],
+      "conditions": ["shortness of breath", "respiratory distress", "dyspnea", "breathing difficulty"],
+      "source": "American Thoracic Society, 2024",
+      "urgency_level": "emergency",
+      "relevance_score": 0.96
+    },
+    {
+      "id": "guideline_011",
+      "title": "Abdominal Pain Assessment Guidelines",
+      "description": "Evidence-based approach to evaluating abdominal pain, including location-based differential diagnosis and appropriate imaging studies.",
+      "recommendations": [
+        "Assess pain location and characteristics",
+        "Evaluate for surgical emergencies",
+        "Consider appropriate imaging studies",
+        "Monitor for signs of peritonitis"
+      ],
+      "conditions": ["abdominal pain", "appendicitis", "gallbladder disease", "bowel obstruction"],
+      "source": "American College of Emergency Physicians, 2024",
+      "urgency_level": "urgent",
+      "relevance_score": 0.92
+    }
+  ],
+  "clinical_conditions": [
+    {
+      "id": "condition_001",
+      "name": "Acute Myocardial Infarction",
+      "description": "A life-threatening condition caused by complete blockage of a coronary artery, leading to heart muscle damage.",
+      "symptoms": ["chest pain", "shortness of breath", "nausea", "sweating", "arm pain", "jaw pain"],
+      "treatment": "Immediate reperfusion therapy, antiplatelet agents, statins",
+      "urgency_level": "emergency",
+      "body_systems": ["cardiovascular"],
+      "risk_factors": ["age", "smoking", "diabetes", "hypertension", "family history"],
+      "relevance_score": 0.99
+    },
+    {
+      "id": "condition_002",
+      "name": "Acute Stroke",
+      "description": "Sudden loss of brain function due to interruption of blood supply to the brain.",
+      "symptoms": ["sudden weakness", "speech difficulty", "facial drooping", "severe headache", "vision problems"],
+      "treatment": "Immediate thrombolytic therapy if within window, stroke unit care",
+      "urgency_level": "emergency",
+      "body_systems": ["neurological", "cardiovascular"],
+      "risk_factors": ["age", "hypertension", "atrial fibrillation", "diabetes"],
+      "relevance_score": 0.98
+    },
+    {
+      "id": "condition_003",
+      "name": "Pulmonary Embolism",
+      "description": "Blockage of a pulmonary artery by a blood clot, potentially life-threatening.",
+      "symptoms": ["sudden shortness of breath", "chest pain", "coughing blood", "rapid heart rate", "leg swelling"],
+      "treatment": "Anticoagulation therapy, thrombolysis in massive PE",
+      "urgency_level": "emergency",
+      "body_systems": ["respiratory", "cardiovascular"],
+      "risk_factors": ["recent surgery", "immobility", "cancer", "pregnancy"],
+      "relevance_score": 0.97
+    },
+    {
+      "id": "condition_004",
+      "name": "Acute Appendicitis",
+      "description": "Inflammation of the appendix, requiring surgical intervention.",
+      "symptoms": ["abdominal pain", "nausea", "vomiting", "fever", "loss of appetite"],
+      "treatment": "Surgical removal of appendix (appendectomy)",
+      "urgency_level": "urgent",
+      "body_systems": ["gastrointestinal"],
+      "risk_factors": ["age 10-30", "male gender"],
+      "relevance_score": 0.95
+    },
+    {
+      "id": "condition_005",
+      "name": "Meningitis",
+      "description": "Inflammation of the membranes surrounding the brain and spinal cord.",
+      "symptoms": ["severe headache", "fever", "neck stiffness", "nausea", "sensitivity to light"],
+      "treatment": "Immediate antibiotics, supportive care",
+      "urgency_level": "emergency",
+      "body_systems": ["neurological"],
+      "risk_factors": ["age", "immunocompromised", "recent infection"],
+      "relevance_score": 0.96
+    },
+    {
+      "id": "condition_006",
+      "name": "Sepsis",
+      "description": "Life-threatening condition caused by the body's response to infection, leading to organ dysfunction.",
+      "symptoms": ["fever", "rapid heart rate", "rapid breathing", "confusion", "low blood pressure"],
+      "treatment": "Immediate antibiotics, fluid resuscitation, vasopressors",
+      "urgency_level": "emergency",
+      "body_systems": ["systemic", "cardiovascular", "respiratory"],
+      "risk_factors": ["age", "immunocompromised", "recent surgery", "chronic illness"],
+      "relevance_score": 0.98
+    },
+    {
+      "id": "condition_007",
+      "name": "Anaphylaxis",
+      "description": "Severe allergic reaction that can be life-threatening, causing airway obstruction and cardiovascular collapse.",
+      "symptoms": ["difficulty breathing", "swelling", "hives", "rapid pulse", "dizziness", "loss of consciousness"],
+      "treatment": "Immediate epinephrine, antihistamines, steroids",
+      "urgency_level": "emergency",
+      "body_systems": ["immune", "respiratory", "cardiovascular"],
+      "risk_factors": ["known allergies", "previous anaphylaxis", "asthma"],
+      "relevance_score": 0.97
+    },
+    {
+      "id": "condition_008",
+      "name": "Acute Kidney Injury",
+      "description": "Sudden loss of kidney function, leading to accumulation of waste products and fluid imbalance.",
+      "symptoms": ["decreased urine output", "swelling", "fatigue", "nausea", "confusion"],
+      "treatment": "Identify and treat underlying cause, dialysis if needed",
+      "urgency_level": "urgent",
+      "body_systems": ["renal", "cardiovascular"],
+      "risk_factors": ["dehydration", "medications", "infection", "heart failure"],
+      "relevance_score": 0.94
+    },
+    {
+      "id": "condition_009",
+      "name": "Acute Respiratory Distress Syndrome",
+      "description": "Severe lung condition causing fluid buildup in the lungs, leading to breathing difficulties.",
+      "symptoms": ["severe shortness of breath", "rapid breathing", "low oxygen levels", "fatigue"],
+      "treatment": "Oxygen therapy, mechanical ventilation, treat underlying cause",
+      "urgency_level": "emergency",
+      "body_systems": ["respiratory", "cardiovascular"],
+      "risk_factors": ["pneumonia", "sepsis", "trauma", "aspiration"],
+      "relevance_score": 0.96
+    },
+    {
+      "id": "condition_010",
+      "name": "Acute Pancreatitis",
+      "description": "Inflammation of the pancreas, often caused by gallstones or alcohol consumption.",
+      "symptoms": ["severe abdominal pain", "nausea", "vomiting", "fever", "tenderness"],
+      "treatment": "Pain management, fluid resuscitation, treat underlying cause",
+      "urgency_level": "urgent",
+      "body_systems": ["gastrointestinal"],
+      "risk_factors": ["gallstones", "alcohol use", "high triglycerides", "medications"],
+      "relevance_score": 0.93
+    },
+    {
+      "id": "condition_011",
+      "name": "Acute Cholecystitis",
+      "description": "Inflammation of the gallbladder, usually caused by gallstones blocking the bile duct.",
+      "symptoms": ["severe right upper quadrant pain", "fever", "nausea", "vomiting", "tenderness"],
+      "treatment": "Antibiotics, pain management, surgical removal if needed",
+      "urgency_level": "urgent",
+      "body_systems": ["gastrointestinal"],
+      "risk_factors": ["gallstones", "female gender", "age", "obesity"],
+      "relevance_score": 0.92
+    },
+    {
+      "id": "condition_012",
+      "name": "Acute Coronary Syndrome",
+      "description": "Umbrella term for conditions involving reduced blood flow to the heart muscle.",
+      "symptoms": ["chest pain", "shortness of breath", "fatigue", "nausea", "sweating"],
+      "treatment": "Antiplatelet agents, statins, beta-blockers, possible intervention",
+      "urgency_level": "emergency",
+      "body_systems": ["cardiovascular"],
+      "risk_factors": ["age", "smoking", "diabetes", "hypertension", "family history"],
+      "relevance_score": 0.97
+    },
+    {
+      "id": "condition_013",
+      "name": "Acute Heart Failure",
+      "description": "Sudden onset of heart's inability to pump blood effectively, leading to fluid buildup.",
+      "symptoms": ["shortness of breath", "swelling", "fatigue", "rapid heart rate", "coughing"],
+      "treatment": "Diuretics, ACE inhibitors, beta-blockers, oxygen therapy",
+      "urgency_level": "urgent",
+      "body_systems": ["cardiovascular", "respiratory"],
+      "risk_factors": ["coronary artery disease", "hypertension", "diabetes", "valvular disease"],
+      "relevance_score": 0.95
+    },
+    {
+      "id": "condition_014",
+      "name": "Acute Asthma Exacerbation",
+      "description": "Sudden worsening of asthma symptoms, potentially life-threatening if severe.",
+      "symptoms": ["wheezing", "shortness of breath", "chest tightness", "coughing", "rapid breathing"],
+      "treatment": "Bronchodilators, steroids, oxygen therapy, possible intubation",
+      "urgency_level": "urgent",
+      "body_systems": ["respiratory"],
+      "risk_factors": ["known asthma", "allergies", "respiratory infections", "smoking"],
+      "relevance_score": 0.94
+    },
+    {
+      "id": "condition_015",
+      "name": "Acute Intestinal Obstruction",
+      "description": "Blockage of the intestines preventing normal passage of food and fluids.",
+      "symptoms": ["severe abdominal pain", "vomiting", "constipation", "abdominal distension", "nausea"],
+      "treatment": "Nasogastric decompression, fluid resuscitation, possible surgery",
+      "urgency_level": "urgent",
+      "body_systems": ["gastrointestinal"],
+      "risk_factors": ["previous surgery", "hernias", "tumors", "inflammatory bowel disease"],
+      "relevance_score": 0.93
+    }
+  ],
+  "symptom_patterns": [
+    {
+      "id": "pattern_001",
+      "name": "Chest Pain Patterns",
+      "description": "Common patterns of chest pain and their associated conditions",
+      "patterns": [
+        {
+          "symptoms": ["crushing chest pain", "radiating to left arm", "sweating", "nausea"],
+          "conditions": ["myocardial infarction", "unstable angina"],
+          "urgency": "emergency"
+        },
+        {
+          "symptoms": ["sharp chest pain", "worse with breathing", "coughing"],
+          "conditions": ["pneumonia", "pleurisy", "pneumothorax"],
+          "urgency": "urgent"
+        },
+        {
+          "symptoms": ["burning chest pain", "worse after eating", "acid reflux"],
+          "conditions": ["GERD", "esophagitis"],
+          "urgency": "routine"
+        }
+      ]
+    },
+    {
+      "id": "pattern_002",
+      "name": "Abdominal Pain Patterns",
+      "description": "Location-based abdominal pain patterns and differential diagnosis",
+      "patterns": [
+        {
+          "symptoms": ["right lower quadrant pain", "nausea", "vomiting", "fever"],
+          "conditions": ["appendicitis", "ovarian cyst"],
+          "urgency": "urgent"
+        },
+        {
+          "symptoms": ["right upper quadrant pain", "fever", "jaundice"],
+          "conditions": ["cholecystitis", "hepatitis"],
+          "urgency": "urgent"
+        },
+        {
+          "symptoms": ["epigastric pain", "nausea", "vomiting", "fever"],
+          "conditions": ["pancreatitis", "gastritis"],
+          "urgency": "urgent"
+        }
+      ]
+    },
+    {
+      "id": "pattern_003",
+      "name": "Neurological Symptom Patterns",
+      "description": "Common neurological symptom patterns and their significance",
+      "patterns": [
+        {
+          "symptoms": ["sudden weakness", "speech difficulty", "facial drooping"],
+          "conditions": ["stroke", "TIA"],
+          "urgency": "emergency"
+        },
+        {
+          "symptoms": ["severe headache", "neck stiffness", "fever"],
+          "conditions": ["meningitis", "subarachnoid hemorrhage"],
+          "urgency": "emergency"
+        },
+        {
+          "symptoms": ["headache", "vision changes", "nausea"],
+          "conditions": ["migraine", "tension headache"],
+          "urgency": "routine"
+        }
+      ]
+    }
+  ],
+  "drug_interactions": [
+    {
+      "id": "interaction_001",
+      "drug1": "Warfarin",
+      "drug2": "Aspirin",
+      "interaction_type": "Increased bleeding risk",
+      "severity": "high",
+      "description": "Combination increases risk of bleeding complications",
+      "recommendation": "Monitor INR closely, consider alternative antiplatelet therapy"
+    },
+    {
+      "id": "interaction_002",
+      "drug1": "Digoxin",
+      "drug2": "Furosemide",
+      "interaction_type": "Increased digoxin toxicity",
+      "severity": "moderate",
+      "description": "Diuretic-induced hypokalemia increases digoxin sensitivity",
+      "recommendation": "Monitor potassium levels and digoxin levels"
+    },
+    {
+      "id": "interaction_003",
+      "drug1": "ACE Inhibitors",
+      "drug2": "Potassium supplements",
+      "interaction_type": "Hyperkalemia risk",
+      "severity": "moderate",
+      "description": "Combination can cause dangerous hyperkalemia",
+      "recommendation": "Monitor potassium levels, avoid high-potassium foods"
+    }
+  ],
+  "vital_signs_norms": [
+    {
+      "age_group": "adult",
+      "heart_rate": {"min": 60, "max": 100},
+      "blood_pressure": {"systolic_min": 90, "systolic_max": 140, "diastolic_min": 60, "diastolic_max": 90},
+      "temperature": {"min": 97.0, "max": 99.5},
+      "respiratory_rate": {"min": 12, "max": 20},
+      "oxygen_saturation": {"min": 95, "max": 100}
+    },
+    {
+      "age_group": "pediatric_0-1",
+      "heart_rate": {"min": 100, "max": 160},
+      "blood_pressure": {"systolic_min": 70, "systolic_max": 100, "diastolic_min": 40, "diastolic_max": 60},
+      "temperature": {"min": 97.0, "max": 100.4},
+      "respiratory_rate": {"min": 30, "max": 60},
+      "oxygen_saturation": {"min": 95, "max": 100}
+    },
+    {
+      "age_group": "pediatric_1-5",
+      "heart_rate": {"min": 80, "max": 140},
+      "blood_pressure": {"systolic_min": 80, "systolic_max": 110, "diastolic_min": 50, "diastolic_max": 70},
+      "temperature": {"min": 97.0, "max": 100.4},
+      "respiratory_rate": {"min": 20, "max": 30},
+      "oxygen_saturation": {"min": 95, "max": 100}
+    }
+  ]
+}
