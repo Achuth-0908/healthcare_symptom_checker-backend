@@ -233,6 +233,10 @@ models/
 .cache/
 cache/
 
+ARCHITECTURE_DIAGRAM.md
+ARCHITECTURE_DOCUMENTATION.md
+TECHNICAL_JUSTIFICATION.md
+
 # Node.js (for frontend)
 node_modules/
 npm-debug.log*
