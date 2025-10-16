@@ -29,7 +29,7 @@ async def keep_alive_ping():
     while True:
         try:
             # Get the base URL from environment or use localhost for development
-            base_url = os.environ.get("RENDER_EXTERNAL_URL", "http://localhost:4000")
+            base_url = os.environ.get("RENDER_EXTERNAL_URL", "https://healthcare-symptom-checker.onrender.com")
             if base_url == "http://localhost:4000":
                 # For local development, we don't need to ping ourselves
                 await asyncio.sleep(60)
