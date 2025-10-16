@@ -267,7 +267,7 @@ class EnhancedRAGService:
                         'type': 'clinical_condition',
                         'name': condition.get('name', ''),
                         'urgency': condition.get('urgency_level', ''),
-                        'body_systems': condition.get('body_systems', []),
+                        'body_systems': ', '.join(condition.get('body_systems', [])),  # Convert list to string
                         'relevance_score': condition.get('relevance_score', 0.95)
                     })
                     all_ids.append(f"clinical_{condition.get('id', len(all_ids))}")
